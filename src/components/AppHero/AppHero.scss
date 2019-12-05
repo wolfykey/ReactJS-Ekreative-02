@@ -1,0 +1,37 @@
+.app-hero {
+  height: calc(100vh - 108px);
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url('/01_Main_Hero_Desktop.jpg') center no-repeat;
+  background-size: cover;
+
+  .container,
+  .row {
+    height: 100%;
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__title,
+  &__description {
+    text-align: center;
+    color: #ffffff;
+  }
+
+  &__btn {
+    padding: 10px 30px;
+    text-transform: uppercase;
+    color: #ffffff;
+    border: 3px solid #ffffff;
+
+    &:hover {
+      background: #ffffff;
+      color: #333333;
+      text-decoration: none;
+    }
+  }
+}

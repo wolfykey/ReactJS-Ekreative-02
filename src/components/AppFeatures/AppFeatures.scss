@@ -1,0 +1,12 @@
+.app-features {
+  background: #111111;
+  padding: 120px 0;
+
+  &-item {
+    margin-bottom: 60px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
