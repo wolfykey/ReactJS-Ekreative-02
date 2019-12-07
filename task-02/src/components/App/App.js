@@ -6,8 +6,10 @@ function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <p>Hello! Lets create your account!</p>
-        <FormRegistration />
+        <div className='container'>
+          <h1>Hello! Lets create your account!</h1>
+          <FormRegistration />
+        </div>
       </header>
     </div>
   )
