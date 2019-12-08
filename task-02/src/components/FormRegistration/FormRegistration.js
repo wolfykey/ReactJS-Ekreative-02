@@ -11,6 +11,8 @@ export default class FormRegistration extends Component {
     passwordError: '',
     confirmPassword: '',
     confirmPasswordError: '',
+    phone: '',
+    phoneError: '',
     login: false
   }
 
@@ -24,6 +26,7 @@ export default class FormRegistration extends Component {
 
   onSubmit = event => {
     event.preventDefault()
+
     if (this.state.username === '' || this.state.username.length < 6) {
       this.setState({
         usernameError: 'Username should not be empty and shorter than 6 symbol!'
@@ -71,18 +74,31 @@ export default class FormRegistration extends Component {
       })
     }
 
+    const phoneFormat = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/
+    if (this.state.phone === '' || !this.state.phone.match(phoneFormat)) {
+      this.setState({
+        phoneError: 'Phone must be in format like: +(123) - 456-78-90'
+      })
+    } else {
+      this.setState({
+        phoneError: ''
+      })
+    }
+
     const {
       usernameError,
       emailError,
       passwordError,
-      confirmPasswordError
+      confirmPasswordError,
+      phoneError
     } = this.state
 
     if (
       usernameError === '' &&
       emailError === '' &&
       passwordError === '' &&
-      confirmPasswordError === ''
+      confirmPasswordError === '' &&
+      phoneError === ''
     ) {
       this.setState({
         login: true
@@ -96,13 +112,14 @@ export default class FormRegistration extends Component {
       usernameError,
       emailError,
       passwordError,
-      confirmPasswordError
+      confirmPasswordError,
+      phoneError
     } = this.state
 
     return (
       <div>
         <form className='jumbotron align-start'>
-          {login && <h2 className='login'>Good! Login</h2>}
+          {login && <h2 className='login'>Good! Login success!</h2>}
 
           <div className='form-group'>
             <label htmlFor='username'>Username</label>
@@ -159,6 +176,20 @@ export default class FormRegistration extends Component {
             />
             {confirmPasswordError !== '' && (
               <span className='form-text'>{confirmPasswordError}</span>
+            )}
+          </div>
+
+          <div className='form-group'>
+            <label htmlFor='phone'>Phone</label>
+            <input
+              type='text'
+              className='form-control'
+              id='phone'
+              name='phone'
+              onChange={this.onChange}
+            />
+            {phoneError !== '' && (
+              <span className='form-text'>{phoneError}</span>
             )}
           </div>
 
